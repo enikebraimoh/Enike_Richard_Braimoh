@@ -41,13 +41,13 @@ public class adapter extends RecyclerView.Adapter<Viewholder>  {
 
     @Override
     public void onBindViewHolder(@NonNull final Viewholder holder, final int position) {
-        holder.fullname.setText((first_name.get(position))+(last_name.get(position)));
+        holder.fullname.setText((first_name.get(position))+" "+(last_name.get(position)));
         holder.email.setText(this.email.get(position));
         holder.gender.setText(agender.get(position));
         holder.country.setText(acountry.get(position));
         holder.jobtitle.setText((job_title.get(position)));
         holder.bio.setText((bio.get(position)));
-        holder.aboutcar.setText((car_color.get(position))+(car_model.get(position))+(car_model_year.get(position)));
+        holder.aboutcar.setText((car_color.get(position))+", "+(car_model.get(position))+", "+(car_model_year.get(position)));
 
 
 
