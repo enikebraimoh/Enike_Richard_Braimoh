@@ -40,7 +40,10 @@ public class adapter extends RecyclerView.Adapter<Viewholder>  {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final Viewholder holder, final int position) {
+    public void onBindViewHolder(@NonNull final Viewholder holder, final int position ) {
+        if(position == 1){
+
+        }
         holder.fullname.setText((first_name.get(position))+" "+(last_name.get(position)));
         holder.email.setText(this.email.get(position));
         holder.gender.setText(agender.get(position));

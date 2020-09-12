@@ -18,8 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
         TextView aboutcar;
         TextView bio;
 
-
-
         public Viewholder(@NonNull View itemView) {
             super(itemView);
 

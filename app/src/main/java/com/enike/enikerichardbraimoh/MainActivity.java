@@ -38,6 +38,8 @@ import jxl.read.biff.BiffException;
 
 public class MainActivity extends AppCompatActivity  {
 
+// variable declerations
+
     Spinner datefrom,dateto,gender,country,color;
     RecyclerView mRecyclerView;
     Button filter;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity  {
     int Requestcode2 = 12345;
 
 
+    // checks if the device is vertion 7 or higher
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,32 +83,35 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-        // date from
+        // date from spinner
         ArrayAdapter<CharSequence> AdapterMain = ArrayAdapter.createFromResource(this,R.array.rang_from,android.R.layout.simple_spinner_item);
         AdapterMain.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         datefrom.setAdapter(AdapterMain);
 
-        // date to
+        // date to spinner
        ArrayAdapter<CharSequence> AdapterMain2 = ArrayAdapter.createFromResource(this,R.array.rang_to,android.R.layout.simple_spinner_item);
       AdapterMain2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dateto.setAdapter(AdapterMain2);
 
-        // for gender
+        // for gender spinner
         ArrayAdapter<CharSequence> Adaptegender = ArrayAdapter.createFromResource(this,R.array.gender,android.R.layout.simple_spinner_item);
         Adaptegender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         gender.setAdapter(Adaptegender);
 
-        // for country
+        // for country spinner
         ArrayAdapter<CharSequence> Adaptercountry = ArrayAdapter.createFromResource(this,R.array.country,android.R.layout.simple_spinner_item);
         Adaptercountry.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         country.setAdapter(Adaptercountry);
 
-        // for color
+        // for color spinner
         ArrayAdapter<CharSequence> Adaptercolor = ArrayAdapter.createFromResource(this,R.array.color,android.R.layout.simple_spinner_item);
         Adaptercolor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         color.setAdapter(Adaptercolor);
 
 
+/*
+
+            // uese to trace or get the item clicked on the spinner.
 
         datefrom.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -179,15 +185,16 @@ public class MainActivity extends AppCompatActivity  {
 
 
             }
-        });
+        });*/
 
 
 
-        /////////////////////
+        // when the filter button is pressed
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //the excell file path must be stored in this path
                 String path = "/storage/emulated/0/ehealth/car_ownsers_data.csv";
                 String line;
 
@@ -196,16 +203,18 @@ public class MainActivity extends AppCompatActivity  {
                     if(br.readLine()!= null){
                     while ((line = br.readLine()) != null){
 
+                        //adds the values from the excel file into the arraylists
+
                         String[] value = line.split(",");
                         first_name.add(value[1]);
                         last_name.add(value[2]);
                         email.add(value[3]);
-                        agender.add(value[4]);
-                        acountry.add(value[5]);
-                        job_title.add(value[6]);
+                        acountry.add(value[4]);
+                        car_model.add(value[5]);
+                        car_model_year.add(value[6]);
                         car_color.add(value[7]);
-                        car_model.add(value[8]);
-                        car_model_year.add(value[9]);
+                        agender.add(value[8]);
+                        job_title.add(value[9]);
                         bio.add(value[10]);
                     }
 
@@ -217,6 +226,7 @@ public class MainActivity extends AppCompatActivity  {
                     mRecyclerView.setAdapter(madapter);
 
                 } catch (FileNotFoundException e) {
+                    // handles the error if you the file was not found
                     Toast.makeText(MainActivity.this, "the file to read was not found in your storage", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -229,10 +239,12 @@ public class MainActivity extends AppCompatActivity  {
 
 
     }
-
+    // required permission from the user to read files
     @Override
     protected void onResume() {
         super.onResume();
+
+        // requests for users permission when the app lunches
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -248,6 +260,7 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
+    // check if the permission is granted
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
