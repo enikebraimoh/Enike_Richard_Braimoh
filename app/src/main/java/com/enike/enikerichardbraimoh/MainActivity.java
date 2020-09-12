@@ -78,8 +78,7 @@ public class MainActivity extends AppCompatActivity  {
         bio = new ArrayList<>();
 
 
-        adapter madapter = new adapter(MainActivity.this,first_name,last_name,email,acountry,car_model,car_model_year,car_color,agender,job_title,bio);
-        mRecyclerView.setAdapter(madapter);
+
 
         // date from
         ArrayAdapter<CharSequence> AdapterMain = ArrayAdapter.createFromResource(this,R.array.rang_from,android.R.layout.simple_spinner_item);
@@ -199,16 +198,18 @@ public class MainActivity extends AppCompatActivity  {
                         String[] value = line.split(",");
                         first_name.add(value[1]);
                         last_name.add(value[2]);
-                        first_name.add(value[3]);
-                        last_name.add(value[4]);
-                        first_name.add(value[5]);
-                        last_name.add(value[6]);
-                        first_name.add(value[7]);
-                        last_name.add(value[8]);
-                        first_name.add(value[9]);
+                        email.add(value[3]);
+                        agender.add(value[4]);
+                        acountry.add(value[5]);
+                        job_title.add(value[6]);
+                        car_color.add(value[7]);
+                        car_model.add(value[8]);
+                        car_model_year.add(value[9]);
+                        bio.add(value[10]);
                     }
 
-
+                    adapter madapter = new adapter(MainActivity.this,first_name,last_name,email,acountry,car_model,car_model_year,car_color,agender,job_title,bio);
+                    mRecyclerView.setAdapter(madapter);
 
                 } catch (FileNotFoundException e) {
                     Toast.makeText(MainActivity.this, "the file to read was not found in your storage", Toast.LENGTH_LONG).show();
