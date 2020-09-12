@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:paddingTop="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:elevation="20dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#E9E9E9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp">
+
+
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="Full Name:" />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/fullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="full Name" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="Email:" />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="email." />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="Country:" />
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="country" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="About Car:" />
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/aboutcar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="car model year and colour." />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="Gender:" />
+
+                <TextView
+
+                    android:layout_margin="5dp"
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="gender" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="Job Title:" />
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/jobtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="jobtitle." />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="Bio:" />
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/bio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/latoregular"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:text="bio." />
+
+
+            </LinearLayout>
+            </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

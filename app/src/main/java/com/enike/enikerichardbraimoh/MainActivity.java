@@ -193,6 +193,7 @@ public class MainActivity extends AppCompatActivity  {
 
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(path));
+                    if(br.readLine()!= null){
                     while ((line = br.readLine()) != null){
 
                         String[] value = line.split(",");
@@ -208,6 +209,10 @@ public class MainActivity extends AppCompatActivity  {
                         bio.add(value[10]);
                     }
 
+                    }else {
+
+                        Toast.makeText(MainActivity.this, "the excell file we located is empty", Toast.LENGTH_LONG).show();
+                    }
                     adapter madapter = new adapter(MainActivity.this,first_name,last_name,email,acountry,car_model,car_model_year,car_color,agender,job_title,bio);
                     mRecyclerView.setAdapter(madapter);
 
