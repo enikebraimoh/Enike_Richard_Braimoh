@@ -1,8 +1,12 @@
 package com.enike.enikerichardbraimoh;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -14,8 +18,11 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +40,8 @@ public class MainActivity extends AppCompatActivity  {
     Button filter;
     Workbook workbook;
     List<String> first_name,last_name,email,acountry,car_model,car_model_year,car_color,agender,job_title,bio;
+    int Requestcode = 1234;
+    int Requestcode2 = 12345;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -169,55 +178,55 @@ public class MainActivity extends AppCompatActivity  {
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                File file = new File("/storage/emulated/0/ehealth/car_ownsers_data.csv");
-                file.mkdirs();
+                String path = "/storage/emulated/0/ehealth/car_ownsers_data.csv";
+                String line;
 
+                try {
+                    BufferedReader br = new BufferedReader(new FileReader(path));
+                    while ((line = br.readLine()) != null){
 
-                if(!file.exists()){
-                    Toast.makeText(MainActivity.this, "file not found", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                  //  Toast.makeText(MainActivity.this, "yaay i found the file", Toast.LENGTH_SHORT).show();
+                        Log.d("ehealth", line);
 
-                    WorkbookSettings ws = new WorkbookSettings();
-                    ws.setGCDisabled(true);
-                    if(file!= null){
-
-                        try {
-                            workbook = workbook.getWorkbook(file);
-
-                           Sheet sheet = workbook.getSheet(0);
-
-                           for (int i= 0; i < sheet.getRows(); i++){
-
-                               Cell[] row = sheet.getRow(i);
-                               first_name.add(row[0].getContents());
-                               last_name.add(row[1].getContents());
-                               email.add(row[2].getContents());
-                               acountry.add(row[3].getContents());
-
-
-                           }
-
-
-
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (BiffException e) {
-                            e.printStackTrace();
-                        }
-                    }else{
-                        Toast.makeText(MainActivity.this, "file is empty", Toast.LENGTH_SHORT).show();
                     }
-
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-
             }
         });
 
 
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //   int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, Requestcode);
+
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == Requestcode) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d("ehealth", "permission Granted");
+            }
+        }
     }
 
 }
