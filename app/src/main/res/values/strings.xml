@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Enike Richard Braimoh</string>
+    <string-array name="rang_from">
+        <item>1990</item>
+        <item>1890</item>
+        <item>3777</item>
+        <item>4666</item>
+    </string-array>
+
+    <string-array name="rang_to">
+        <item>2001</item>
+        <item>2000</item>
+        <item>1999</item>
+        <item>1003</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="country">
+       <item>Thailand</item>
+        <item>France</item>
+        <item>Peru</item>
+        <item>Argentina</item>
+        <item>China</item>
+        <item>Russia</item>
+        <item>China</item>
+        <item>Argentina</item>
+        <item>Indonesia</item>
+        <item>China</item>
+        <item>Eritrea</item>
+        <item>Mauritania</item>
+
+    </string-array>
+
+    <string-array name="color">
+        <item>blue</item>
+        <item>green</item>
+        <item>red</item>
+        <item>brown</item>
+        <item>orange</item>
+        <item>black</item>
+
+    </string-array>
+
+</resources>
