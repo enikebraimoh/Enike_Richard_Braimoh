@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -37,11 +39,13 @@ import jxl.read.biff.BiffException;
 public class MainActivity extends AppCompatActivity  {
 
     Spinner datefrom,dateto,gender,country,color;
+    RecyclerView mRecyclerView;
     Button filter;
     Workbook workbook;
     List<String> first_name,last_name,email,acountry,car_model,car_model_year,car_color,agender,job_title,bio;
     int Requestcode = 1234;
     int Requestcode2 = 12345;
+
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -56,6 +60,11 @@ public class MainActivity extends AppCompatActivity  {
         color = findViewById(R.id.color);
         filter = findViewById(R.id.filter);
 
+        mRecyclerView = findViewById(R.id.rview);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
+
         // define the arrays
         first_name = new ArrayList<>();
         last_name = new ArrayList<>();
@@ -69,6 +78,8 @@ public class MainActivity extends AppCompatActivity  {
         bio = new ArrayList<>();
 
 
+        adapter madapter = new adapter(MainActivity.this,first_name,last_name,email,acountry,car_model,car_model_year,car_color,agender,job_title,bio);
+        mRecyclerView.setAdapter(madapter);
 
         // date from
         ArrayAdapter<CharSequence> AdapterMain = ArrayAdapter.createFromResource(this,R.array.rang_from,android.R.layout.simple_spinner_item);
@@ -185,10 +196,22 @@ public class MainActivity extends AppCompatActivity  {
                     BufferedReader br = new BufferedReader(new FileReader(path));
                     while ((line = br.readLine()) != null){
 
-                        Log.d("ehealth", line);
-
+                        String[] value = line.split(",");
+                        first_name.add(value[1]);
+                        last_name.add(value[2]);
+                        first_name.add(value[3]);
+                        last_name.add(value[4]);
+                        first_name.add(value[5]);
+                        last_name.add(value[6]);
+                        first_name.add(value[7]);
+                        last_name.add(value[8]);
+                        first_name.add(value[9]);
                     }
+
+
+
                 } catch (FileNotFoundException e) {
+                    Toast.makeText(MainActivity.this, "the file to read was not found in your storage", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
